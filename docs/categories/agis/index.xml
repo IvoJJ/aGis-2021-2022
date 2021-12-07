@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>aGIS on aGis Course Website 2021/2022</title>
+    <link>https://IvoJJ.github.io/aGis-2021-2022/categories/agis/</link>
+    <description>Recent content in aGIS on aGis Course Website 2021/2022</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Thu, 11 Nov 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://IvoJJ.github.io/aGis-2021-2022/categories/agis/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>About Lidar metrics</title>
+      <link>https://IvoJJ.github.io/aGis-2021-2022/post/2021-12-07-about-lidar-metrics/</link>
+      <pubDate>Thu, 11 Nov 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://IvoJJ.github.io/aGis-2021-2022/post/2021-12-07-about-lidar-metrics/</guid>
+      <description>sfpihvsdv </description>
+    </item>
+    
+    <item>
+      <title>An Example Post</title>
+      <link>https://IvoJJ.github.io/aGis-2021-2022/post/2021-12-07-ss/</link>
+      <pubDate>Thu, 11 Nov 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://IvoJJ.github.io/aGis-2021-2022/post/2021-12-07-ss/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>

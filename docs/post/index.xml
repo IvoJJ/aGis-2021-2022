@@ -6,7 +6,7 @@
     <description>Recent content in Posts on aGis Course Website 2021/2022</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 18 Jul 2021 10:52:59 +0800</lastBuildDate><atom:link href="https://IvoJJ.github.io/aGis-2021-2022/post/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 11 Nov 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://IvoJJ.github.io/aGis-2021-2022/post/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Markdown Syntax Guide</title>
       <link>https://IvoJJ.github.io/aGis-2021-2022/post/markdown-syntax/</link>
@@ -16,6 +16,24 @@
       <description>This article offers a sample of basic Markdown syntax that can be used in Hugo content files, also it shows whether basic HTML elements are decorated with CSS in a Hugo theme.
 Note: to get the Markdown syntax have a look at the markrdown text file. The following HTML &amp;lt;h1&amp;gt;—&amp;lt;h6&amp;gt; elements represent six levels of section headings. &amp;lt;h1&amp;gt; is the highest section level while &amp;lt;h6&amp;gt; is the lowest.
 H1 H2 H3 H4 H5 H6 Paragraph Xerum, quo qui aut unt expliquam qui dolut labo.</description>
+    </item>
+    
+    <item>
+      <title>About Lidar metrics</title>
+      <link>https://IvoJJ.github.io/aGis-2021-2022/post/2021-12-07-about-lidar-metrics/</link>
+      <pubDate>Thu, 11 Nov 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://IvoJJ.github.io/aGis-2021-2022/post/2021-12-07-about-lidar-metrics/</guid>
+      <description>sfpihvsdv </description>
+    </item>
+    
+    <item>
+      <title>An Example Post</title>
+      <link>https://IvoJJ.github.io/aGis-2021-2022/post/2021-12-07-ss/</link>
+      <pubDate>Thu, 11 Nov 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://IvoJJ.github.io/aGis-2021-2022/post/2021-12-07-ss/</guid>
+      <description></description>
     </item>
     
   </channel>
