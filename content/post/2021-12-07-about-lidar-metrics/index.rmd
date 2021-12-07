@@ -47,27 +47,26 @@ multiple metrics using different formulas.
 Following down below there is an exemplary workflow/calculation of some of \ these metrics and which information they provide
 
 
+```{r setup, message=FALSE, warning=FALSE, include=FALSE, results='hide'}
+require(envimaR)
+# MANDANTORY: defining the root folder DO NOT change this line
+rootDIR = "~/edu/agis"
 
+appendpackagesToLoad = c("tmap")
+appendProjectDirList =  c("data/lvl0/", "data/normalized", "data/data_mof", "data/lvl1/")
+
+# MANDANTORY: calling the setup script also DO NOT change this line
+source(file.path(envimaR::alternativeEnvi(root_folder = rootDIR),"src/agis_setup.R"),echo = TRUE)
+```
 
 **1. Load the data of the research area**
 
-
-```r
+```{r load file}
 las <- list.files(envrmt$path_lvl0,
                   pattern = glob2rx("*.las"),
                   full.names = TRUE)
 Lfile <- lidR::readLAS(las[1])
 Lfile
-```
-
-```
-## class        : LAS (v1.3 format 1)
-## memory       : 2 Gb 
-## extent       : 477500, 478217.5, 5631730, 5632500 (xmin, xmax, ymin, ymax)
-## coord. ref.  : NA 
-## area         : 0.55 kunits²
-## points       : 26.35 million points
-## density      : 47.7 points/units²
 ```
 
 If all available points are included, the metrics at point *cloud level* can be
@@ -79,30 +78,9 @@ function can also be modified to isolate other information like intensity or
 percentage (just refer to the lidR manual or use ?.stdmetrics).
 
 
-
-```r
+```{r cloud metrics}
 clmetrics <- lidR::cloud_metrics(Lfile, func = lidR::.stdmetrics_z)
 head(clmetrics)
-```
-
-```
-## $zmax
-## [1] 371.824
-## 
-## $zmean
-## [1] 285.3682
-## 
-## $zsd
-## [1] 23.40896
-## 
-## $zskew
-## [1] 0.7478282
-## 
-## $zkurt
-## [1] 3.411944
-## 
-## $zentropy
-## [1] 0.760378
 ```
 
 The return shows that the maximum height in the research area is around 380m, 
@@ -111,33 +89,24 @@ with a mean height of 285m.
 To calculate metrics at grid level grid_metrics can be used. It is also possible
 to calculate single parameters using functions like mean(Z) or sd(Z) or self- written functions.
 
-
-```r
+```{r grid metrics 1}
 # metrics at the grid level (res refers to the resolution of the cell, 1 = 10m & 50 = 50m)
 grid <- lidR::grid_metrics(Lfile, ~mean(Z), res = 1)
 lidR::plot(grid)
 ```
 
-<img src="index_files/figure-html/grid metrics 1-1.png" width="672" />
-
-
-```r
+```{r grid metrics 2}
 # use higher res to reduce computation time
 grid_m <- lidR::grid_metrics(Lfile, .stdmetrics, res = 10) 
 lidR::plot(grid_m)
 ```
 
-<img src="index_files/figure-html/grid metrics 2-1.png" width="672" />
-
 Grid metrics can also be used to calculate the density:
 
-
-```r
+```{r grid metrics 3}
 dns <- lidR::grid_metrics(Lfile, ~length(Z)/1, res = 1)
 lidR::plot(dns, main = "Point density [1m² cells]")
 ```
-
-<img src="index_files/figure-html/grid metrics 3-1.png" width="672" />
 
 ## Discussion
 

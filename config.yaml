@@ -48,7 +48,7 @@ params:
     - href: ''
       title: ''
   friends: no
-  header_image: img/home-header.jpg
+  header_image: img/proxy-image.jpg
   image_404: img/404-bg.jpg
   keyword: my key words
   leancloud_app_id: ''

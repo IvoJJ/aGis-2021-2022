@@ -6,14 +6,15 @@
     <description>Recent content in task on aGis Course Website 2021/2022</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 11 Nov 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://IvoJJ.github.io/aGis-2021-2022/tags/task/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 29 Nov 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://IvoJJ.github.io/aGis-2021-2022/tags/task/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>About Lidar metrics</title>
       <link>https://IvoJJ.github.io/aGis-2021-2022/post/2021-12-07-about-lidar-metrics/</link>
-      <pubDate>Thu, 11 Nov 2021 00:00:00 +0000</pubDate>
+      <pubDate>Mon, 29 Nov 2021 00:00:00 +0000</pubDate>
       
       <guid>https://IvoJJ.github.io/aGis-2021-2022/post/2021-12-07-about-lidar-metrics/</guid>
-      <description>sfpihvsdv </description>
+      <description>Introduction There are different metrics that can be calculated using Lidar Data. These metrics (only some) are presented and discussed down below. Also how useful are different approaches to calculate these metrics and how/ for which topic can these metrics be used? Can these metrics be used to estimate humidity or temperature?
+Overall the metrics are some kind of attributes calculated from the Lidar data. Usually metrics are calculated at the basis of the point height (z-axis).</description>
     </item>
     
   </channel>
