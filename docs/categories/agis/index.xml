@@ -6,7 +6,17 @@
     <description>Recent content in aGIS on aGis Course Website 2021/2022</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 29 Nov 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://IvoJJ.github.io/aGis-2021-2022/categories/agis/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 17 Jan 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://IvoJJ.github.io/aGis-2021-2022/categories/agis/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>About Lidar Metrics and forest microclimate</title>
+      <link>https://IvoJJ.github.io/aGis-2021-2022/post/2022-01-18-lidar-metrics-for-forest-microclimate/</link>
+      <pubDate>Mon, 17 Jan 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://IvoJJ.github.io/aGis-2021-2022/post/2022-01-18-lidar-metrics-for-forest-microclimate/</guid>
+      <description>Introduction In this blog post different lidR metrics and ecological indices are calculated using Lidar data. These will be used to model forest microclimate in future applications.
+ Data and Methods Only one tile from the calculated lidR catalog is used, due to computation time. The lidR catalog was calculated using the provided script from https://gisma-courses.github.io/gi-modules/post/2021-11-20-forest-information-from-lidar-data/. Using the lidR Package, different metrics and ecological indices are calculated at grid- and voxel level.</description>
+    </item>
+    
     <item>
       <title>About Lidar Metrics</title>
       <link>https://IvoJJ.github.io/aGis-2021-2022/post/2021-12-07-about-lidar-metrics/</link>

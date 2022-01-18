@@ -1,0 +1,94 @@
+---
+title:       "About Lidar Metrics and forest microclimate"
+description: "Post about which Lidar metrics can be used to describe forest microclimate and how they are calculated"
+date:        2022-01-17
+author:      "Ivo Jung"
+image:       "img/ungabunga.jpg" 
+categories: ["aGIS"]
+tags: ["task"]
+toc: true
+output:
+  blogdown::html_page:
+    keep_md: yes
+weight: 100
+---
+
+<script src="{{< blogdown/postref >}}index_files/header-attrs/header-attrs.js"></script>
+
+<div id="TOC">
+
+</div>
+
+<div id="introduction" class="section level2">
+<h2>Introduction</h2>
+<p>In this blog post different lidR metrics and ecological indices are calculated using Lidar data. These will be used to model forest microclimate in future applications.</p>
+</div>
+<div id="data-and-methods" class="section level2">
+<h2>Data and Methods</h2>
+<p>Only one tile from the calculated lidR catalog is used, due to computation time. The lidR catalog
+was calculated using the provided script from <a href="https://gisma-courses.github.io/gi-modules/post/2021-11-20-forest-information-from-lidar-data/" class="uri">https://gisma-courses.github.io/gi-modules/post/2021-11-20-forest-information-from-lidar-data/</a>.
+Using the lidR Package, different metrics and ecological indices are calculated at grid- and voxel level. Afterwards they are stacked for convenient accessibility for future modelling of forest microclimate.</p>
+<p><strong>The calculated metrics and indices are:</strong></p>
+<ul>
+<li>Standard deviation (SD) &amp; Maximum, Minimum of the First Returns:</li>
+<li>Leaf Area Density (LAD) and Shannon Index of the LAD</li>
+<li>Canopy Height Model &amp; Normalized Parameters</li>
+<li>Digital Terrain Model</li>
+<li>Point Density Metrics</li>
+</ul>
+<p><strong>Why were these metrics/indices chosen:</strong></p>
+<p>These metrics are a prototype draft and were chosen based on discussions in the Agis course and past studies.
+It was found that metrics of the first returns, the LAD and the Shannon Index seem to be correlated to temperature and can be used to predict microclimate (Carrasco et al. 2019). According to Latif et al. (2012) elevation-based metrics might be beneficial to model microclimate in forests. DTMs could also be useful to include in a model as variables like exposition could impact the microclimate depending on the location. As it was discussed in the course, point density might also be a strong predictor for forest microclimate.</p>
+</div>
+<div id="calculation-results" class="section level2">
+<h2>Calculation &amp; Results</h2>
+<p>First, visualize the LAS</p>
+<pre class="r"><code>#plot(ras, main = &quot;Rasterized LAS&quot;)</code></pre>
+<p>Calculate SD of the first returns with a resolution of 5m and visualize</p>
+<pre class="r"><code>sd_FR &lt;- grid_metrics(las, func = sd(Z), res = 5, by_echo = &quot;first&quot;)
+plot(sd_FR, main = &quot;SD First returns [m]&quot;)</code></pre>
+<p><img src="{{< blogdown/postref >}}index_files/figure-html/firstreturns-1.png" width="672" /></p>
+<p>Normalize height and build CHM with standard pitfree parameters (use ?pitfree for reference)</p>
+<p><img src="{{< blogdown/postref >}}index_files/figure-html/chm-1.png" width="672" /></p>
+<p>Calculate Digital Terrain Model (DTM) with k-nearest neighbor approach (Reference: ?knnidw)</p>
+<pre class="r"><code>DTM &lt;- lidR::grid_terrain(las, res = 5.0, algorithm = lidR::knnidw(k = 10, p = 2))</code></pre>
+<pre><code>## Warning: There were 5 degenerated ground points. Some X Y coordinates were
+## repeated but with different Z coordinates. min Z were retained.</code></pre>
+<pre class="r"><code>lidR::plot(DTM, main = &quot;KNN DTM with resolution = 5m&quot;)</code></pre>
+<p><img src="{{< blogdown/postref >}}index_files/figure-html/unnamed-chunk-1-1.png" width="672" /></p>
+<pre class="r"><code>hist(DTM, xlab = &quot;Elevation [m]&quot;)</code></pre>
+<p><img src="{{< blogdown/postref >}}index_files/figure-html/unnamed-chunk-1-2.png" width="672" /></p>
+<p>Calculate LAD &amp; LAD based Shannon Index</p>
+<pre class="r"><code>LAD &lt;- voxel_metrics(las, func = LAD(Z), res = 5)
+LAD &lt;- na.omit(LAD)
+
+LAD_Shannon &lt;- voxel_metrics(las, func = entropy(Z), res = 5)
+LAD_Shannon &lt;-na.omit(LAD_Shannon)</code></pre>
+<p><img src="{{< blogdown/postref >}}index_files/figure-html/unnamed-chunk-2-1.png" width="672" /><img src="{{< blogdown/postref >}}index_files/figure-html/unnamed-chunk-2-2.png" width="672" /></p>
+<p>Calculate Point density</p>
+<pre class="r"><code>pdense &lt;- lidR::grid_metrics(nLas, ~length(Z)/1, res = 5.0)</code></pre>
+<p><img src="{{< blogdown/postref >}}index_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
+<p>Calculate some more standard metrics for the first returns and canopy height</p>
+<pre class="r"><code>mean_FR &lt;- grid_metrics(las, func = ~mean(Z), res = 5, by_echo = &quot;first&quot;)
+max_FR &lt;- grid_metrics(las, func = ~max(Z), res = 5, by_echo = &quot;first&quot;)
+min_FR &lt;- grid_metrics(las, func = ~min(Z), res = 5, by_echo = &quot;first&quot;)
+
+h_mean &lt;- lidR::grid_metrics(nLas, func = ~mean(Z), res = 5.0)
+h_max &lt;- lidR::grid_metrics(nLas, func = ~max(Z), res = 5.0)
+h_min &lt;- lidR::grid_metrics(nLas, func = ~min(Z), res = 5.0)
+h_sd &lt;- lidR::grid_metrics(nLas, func = ~sd(Z), res = 5.0)</code></pre>
+<p><img src="{{< blogdown/postref >}}index_files/figure-html/unnamed-chunk-6-1.png" width="672" /><img src="{{< blogdown/postref >}}index_files/figure-html/unnamed-chunk-6-2.png" width="672" /><img src="{{< blogdown/postref >}}index_files/figure-html/unnamed-chunk-6-3.png" width="672" /></p>
+<p>Stack all of the calculated metrics and indices together</p>
+<pre class="r"><code>lidarstack &lt;- stack(CHM, DTM, h_max, h_mean, h_min, h_sd, max_FR, mean_FR, min_FR, sd_FR, pdense)
+names(lidarstack)</code></pre>
+<pre><code>##  [1] &quot;CHM&quot;           &quot;DTM&quot;           &quot;h_max&quot;         &quot;h_mean&quot;       
+##  [5] &quot;h_min&quot;         &quot;h_sd&quot;          &quot;max_FR&quot;        &quot;mean_FR&quot;      
+##  [9] &quot;min_FR&quot;        &quot;sd_FR&quot;         &quot;point_density&quot;</code></pre>
+</div>
+<div id="references" class="section level2">
+<h2>References</h2>
+<p>Carrasco, L., Giam, X., Papeş, M. &amp; Sheldon, K.S. (2019): Metrics of Lidar-Derived 3D Vegetation Structure Reveal Contrasting Effects of Horizontal and Vertical Forest Heterogeneity on Bird Species Richness. Remote Sens. 11, 743.</p>
+<p>Latif, Z.A. (2012): Forest Microclimate Modelling Using Remotely Sensed Data. ISrJ 2 (1), 19-25.</p>
+<p>Roussel, J.-R., Goodbody, T.R.H. &amp; Tompalski, P. (2021): The lidR package. <a href="https://jean-romain.github.io/lidRbook/index.html" class="uri">https://jean-romain.github.io/lidRbook/index.html</a> (access: 28.12.2021).
+put all references here</p>
+</div>
