@@ -78,9 +78,10 @@ plot(sd_FR, main = "SD First returns [m]")
 Normalize height and build CHM with standard pitfree parameters (use ?pitfree for reference)
 
 ```{r mormalize, include=FALSE}
-nLas <- lidR::normalize_height(las, lidR::tin())
+#nLas <- lidR::normalize_height(las, lidR::tin())
 ```
 ```{r chm, echo=FALSE}
+nLas <- las
 CHM <- grid_canopy(nLas, res = 5.0, lidR::pitfree(thresholds = c(0,2,5,10,15), c(0,1)))
 
 tmap::tm_shape(CHM) +
@@ -118,7 +119,7 @@ hist(LAD_Shannon$V1,
 Calculate Point density
 
 ```{r}
-pdense <- lidR::grid_metrics(nLas, ~length(Z)/1, res = 5.0)
+pdense <- lidR::grid_metrics(nLas, ~length(Z)/25, res = 5.0)
 ```
 ```{r echo=FALSE}
 plot(pdense, col = gray.colors(50,0,1))
@@ -169,6 +170,8 @@ names(pdense) <- "point_density"
 ```{r}
 lidarstack <- stack(CHM, DTM, h_max, h_mean, h_min, h_sd, max_FR, mean_FR, min_FR, sd_FR, pdense)
 names(lidarstack)
+#saveRDS(lidarstack, paste0(envrmt$path_data, "lidarstack.RDS"))
+plot(lidarstack)
 ```
 ## References
 

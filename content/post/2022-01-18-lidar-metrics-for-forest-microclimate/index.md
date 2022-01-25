@@ -103,7 +103,7 @@ Calculate Point density
 
 
 ```r
-pdense <- lidR::grid_metrics(nLas, ~length(Z)/1, res = 5.0)
+pdense <- lidR::grid_metrics(nLas, ~length(Z)/25, res = 5.0)
 ```
 <img src="index_files/figure-html/unnamed-chunk-4-1.png" width="672" />
 
@@ -138,6 +138,13 @@ names(lidarstack)
 ##  [5] "h_min"         "h_sd"          "max_FR"        "mean_FR"      
 ##  [9] "min_FR"        "sd_FR"         "point_density"
 ```
+
+```r
+#saveRDS(lidarstack, paste0(envrmt$path_data, "lidarstack.RDS"))
+plot(lidarstack)
+```
+
+<img src="index_files/figure-html/unnamed-chunk-8-1.png" width="672" />
 ## References
 
 Carrasco, L., Giam, X., Papeş, M. & Sheldon, K.S. (2019): Metrics of Lidar-Derived 3D Vegetation Structure Reveal Contrasting Effects of Horizontal and Vertical Forest Heterogeneity on Bird Species Richness. Remote Sens. 11, 743.

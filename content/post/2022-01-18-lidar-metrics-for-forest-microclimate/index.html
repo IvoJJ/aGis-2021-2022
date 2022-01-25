@@ -66,7 +66,7 @@ LAD_Shannon &lt;- voxel_metrics(las, func = entropy(Z), res = 5)
 LAD_Shannon &lt;-na.omit(LAD_Shannon)</code></pre>
 <p><img src="{{< blogdown/postref >}}index_files/figure-html/unnamed-chunk-2-1.png" width="672" /><img src="{{< blogdown/postref >}}index_files/figure-html/unnamed-chunk-2-2.png" width="672" /></p>
 <p>Calculate Point density</p>
-<pre class="r"><code>pdense &lt;- lidR::grid_metrics(nLas, ~length(Z)/1, res = 5.0)</code></pre>
+<pre class="r"><code>pdense &lt;- lidR::grid_metrics(nLas, ~length(Z)/25, res = 5.0)</code></pre>
 <p><img src="{{< blogdown/postref >}}index_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
 <p>Calculate some more standard metrics for the first returns and canopy height</p>
 <pre class="r"><code>mean_FR &lt;- grid_metrics(las, func = ~mean(Z), res = 5, by_echo = &quot;first&quot;)
@@ -84,9 +84,10 @@ names(lidarstack)</code></pre>
 <pre><code>##  [1] &quot;CHM&quot;           &quot;DTM&quot;           &quot;h_max&quot;         &quot;h_mean&quot;       
 ##  [5] &quot;h_min&quot;         &quot;h_sd&quot;          &quot;max_FR&quot;        &quot;mean_FR&quot;      
 ##  [9] &quot;min_FR&quot;        &quot;sd_FR&quot;         &quot;point_density&quot;</code></pre>
-</div>
-<div id="references" class="section level2">
-<h2>References</h2>
+<pre class="r"><code>#saveRDS(lidarstack, paste0(envrmt$path_data, &quot;lidarstack.RDS&quot;))
+plot(lidarstack)</code></pre>
+<p><img src="{{< blogdown/postref >}}index_files/figure-html/unnamed-chunk-8-1.png" width="672" />
+## References</p>
 <p>Carrasco, L., Giam, X., Papeş, M. &amp; Sheldon, K.S. (2019): Metrics of Lidar-Derived 3D Vegetation Structure Reveal Contrasting Effects of Horizontal and Vertical Forest Heterogeneity on Bird Species Richness. Remote Sens. 11, 743.</p>
 <p>Latif, Z.A. (2012): Forest Microclimate Modelling Using Remotely Sensed Data. ISrJ 2 (1), 19-25.</p>
 <p>Roussel, J.-R., Goodbody, T.R.H. &amp; Tompalski, P. (2021): The lidR package. <a href="https://jean-romain.github.io/lidRbook/index.html" class="uri">https://jean-romain.github.io/lidRbook/index.html</a> (access: 28.12.2021).
