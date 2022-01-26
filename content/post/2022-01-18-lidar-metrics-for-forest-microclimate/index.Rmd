@@ -176,7 +176,7 @@ plot(lidarstack)
 
 ## Outlook
 
-The next post will be about cleaning the data (which should've been done partially before calculating the metrics, will also be be added) and remove autocorreclated data and setting up a data frame, which can be used to predict forest microclimate for the chosen study area.
+The next post will be about cleaning the data (which should've been done partially before calculating the metrics, this will also be added then) and remove autocorreclated data and setting up a data frame, which can be used to predict forest microclimate for the chosen study area.
 
 ## References
 
