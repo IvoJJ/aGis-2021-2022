@@ -25,7 +25,7 @@ Using the lidR Package, different metrics and ecological indices are calculated 
 
 **The calculated metrics and indices are:**
 
-- Standard deviation (SD) & Maximum, Minimum of the First Returns:
+- Standard deviation (SD) & Maximum, Minimum of the First Returns
 - Leaf Area Density (LAD) and Shannon Index of the LAD
 - Canopy Height Model & Normalized Parameters
 - Digital Terrain Model
@@ -78,9 +78,10 @@ plot(sd_FR, main = "SD First returns [m]")
 Normalize height and build CHM with standard pitfree parameters (use ?pitfree for reference)
 
 ```{r mormalize, include=FALSE}
-nLas <- lidR::normalize_height(las, lidR::tin())
+#nLas <- lidR::normalize_height(las, lidR::tin())
 ```
 ```{r chm, echo=FALSE}
+nLas <- las
 CHM <- grid_canopy(nLas, res = 5.0, lidR::pitfree(thresholds = c(0,2,5,10,15), c(0,1)))
 
 tmap::tm_shape(CHM) +
@@ -172,6 +173,11 @@ names(lidarstack)
 #saveRDS(lidarstack, paste0(envrmt$path_data, "lidarstack.RDS"))
 plot(lidarstack)
 ```
+
+## Outlook
+
+The next post will be about cleaning the data (which should've been done partially before calculating the metrics, will also be be added) and remove autocorreclated data and setting up a data frame, which can be used to predict forest microclimate for the chosen study area.
+
 ## References
 
 Carrasco, L., Giam, X., Papeş, M. & Sheldon, K.S. (2019): Metrics of Lidar-Derived 3D Vegetation Structure Reveal Contrasting Effects of Horizontal and Vertical Forest Heterogeneity on Bird Species Richness. Remote Sens. 11, 743.

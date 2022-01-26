@@ -222,7 +222,7 @@ was calculated using the provided script from <a href="https://gisma-courses.git
 Using the lidR Package, different metrics and ecological indices are calculated at grid- and voxel level. Afterwards they are stacked for convenient accessibility for future modelling of forest microclimate.</p>
 <p><strong>The calculated metrics and indices are:</strong></p>
 <ul>
-<li>Standard deviation (SD) &amp; Maximum, Minimum of the First Returns:</li>
+<li>Standard deviation (SD) &amp; Maximum, Minimum of the First Returns</li>
 <li>Leaf Area Density (LAD) and Shannon Index of the LAD</li>
 <li>Canopy Height Model &amp; Normalized Parameters</li>
 <li>Digital Terrain Model</li>
@@ -278,8 +278,14 @@ names(lidarstack)</code></pre>
 ##  [9] &quot;min_FR&quot;        &quot;sd_FR&quot;         &quot;point_density&quot;</code></pre>
 <pre class="r"><code>#saveRDS(lidarstack, paste0(envrmt$path_data, &quot;lidarstack.RDS&quot;))
 plot(lidarstack)</code></pre>
-<p><img src="https://IvoJJ.github.io/aGis-2021-2022/post/2022-01-18-lidar-metrics-for-forest-microclimate/index_files/figure-html/unnamed-chunk-8-1.png" width="672" />
-## References</p>
+<p><img src="https://IvoJJ.github.io/aGis-2021-2022/post/2022-01-18-lidar-metrics-for-forest-microclimate/index_files/figure-html/unnamed-chunk-8-1.png" width="672" /></p>
+</div>
+<div id="outlook" class="section level2">
+<h2>Outlook</h2>
+<p>The next post will be about cleaning the data (which should’ve been done partially before calculating the metrics, will also be be added) and remove autocorreclated data and setting up a data frame, which can be used to predict forest microclimate for the chosen study area.</p>
+</div>
+<div id="references" class="section level2">
+<h2>References</h2>
 <p>Carrasco, L., Giam, X., Papeş, M. &amp; Sheldon, K.S. (2019): Metrics of Lidar-Derived 3D Vegetation Structure Reveal Contrasting Effects of Horizontal and Vertical Forest Heterogeneity on Bird Species Richness. Remote Sens. 11, 743.</p>
 <p>Latif, Z.A. (2012): Forest Microclimate Modelling Using Remotely Sensed Data. ISrJ 2 (1), 19-25.</p>
 <p>Roussel, J.-R., Goodbody, T.R.H. &amp; Tompalski, P. (2021): The lidR package. <a href="https://jean-romain.github.io/lidRbook/index.html" class="uri">https://jean-romain.github.io/lidRbook/index.html</a> (access: 28.12.2021).

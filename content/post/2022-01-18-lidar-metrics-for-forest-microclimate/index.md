@@ -25,7 +25,7 @@ Using the lidR Package, different metrics and ecological indices are calculated 
 
 **The calculated metrics and indices are:**
 
-- Standard deviation (SD) & Maximum, Minimum of the First Returns:
+- Standard deviation (SD) & Maximum, Minimum of the First Returns
 - Leaf Area Density (LAD) and Shannon Index of the LAD
 - Canopy Height Model & Normalized Parameters
 - Digital Terrain Model
@@ -145,6 +145,11 @@ plot(lidarstack)
 ```
 
 <img src="index_files/figure-html/unnamed-chunk-8-1.png" width="672" />
+
+## Outlook
+
+The next post will be about cleaning the data (which should've been done partially before calculating the metrics, will also be be added) and remove autocorreclated data and setting up a data frame, which can be used to predict forest microclimate for the chosen study area.
+
 ## References
 
 Carrasco, L., Giam, X., Papeş, M. & Sheldon, K.S. (2019): Metrics of Lidar-Derived 3D Vegetation Structure Reveal Contrasting Effects of Horizontal and Vertical Forest Heterogeneity on Bird Species Richness. Remote Sens. 11, 743.
